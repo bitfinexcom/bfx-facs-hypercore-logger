@@ -1,0 +1,7 @@
+{
+  "enable": true,
+  "level": "info",
+  "storageDir": "tmp/hypercore-logs",
+  "publicKey": "",
+  "secretKey": ""
+}
