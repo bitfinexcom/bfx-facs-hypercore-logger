@@ -18,7 +18,7 @@ hyperlog read -k <public_key> --tail
 ```
 
 ## Config example
-```
+```jsonc
 {
   "enable": true,
   "level": "info", // log level to be sent to Hypercore logs
