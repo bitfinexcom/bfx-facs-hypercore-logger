@@ -24,7 +24,7 @@ class HyperCoreLoggerFacility extends Base {
         return cb(null)
       }
 
-      const feedDir = path.join(process.cwd(), hypercoreCfg.storageDir)
+      const feedDir = path.normalize(path.resolve(hypercoreCfg.storageDir))
       const server = new HyperCoreLogger(
         feedDir,
         hypercoreCfg.publicKey,
