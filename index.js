@@ -52,8 +52,9 @@ class HyperCoreLoggerFacility extends Base {
   getLogger (opts = {}) {
     const hypercoreCfg = this.conf
 
-    const logger = new Logger(this.hyperCoreLogs, {
+    const logger = new Logger({
       ...opts,
+      hypercoreServer: this.hyperCoreLogs,
       enableHypercore: hypercoreCfg.enable
     })
 
