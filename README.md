@@ -1,15 +1,9 @@
 # bfx-facs-hypercore-logger
 
 ## Getting started
-Install [Hypercore CLI](https://hypercore-protocol.org/) and [Hypercore Logs](https://github.com/bitfinexcom/hypercore-logs)
+Install [Hypercore Logs](https://github.com/bitfinexcom/hypercore-logs)
 ```
-npm install -g @hyperspace/cli 
 npm install -g https://github.com/bitfinexcom/hypercore-logs.git
-```
-
-Run Hypercore daemon
-```
-hyp daemon start
 ```
 
 Reading from the public key can be started by
