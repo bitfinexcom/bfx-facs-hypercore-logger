@@ -29,8 +29,10 @@ class HyperCoreLoggerFacility extends Base {
         feedDir,
         hypercoreCfg.publicKey,
         {
-          secretKey: hypercoreCfg.secretKey
-        }
+          secretKey: hypercoreCfg.secretKey,
+          ...(hypercoreCfg.feedOpts ?? {})
+        },
+        hypercoreCfg.swarmOpts ?? {}
       )
 
       this.hyperCoreLogs = server
