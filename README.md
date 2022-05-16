@@ -21,10 +21,11 @@ hyperlog read -k <public_key> --tail
 ```jsonc
 {
   "enable": true,
-  "level": "info", // log level to be sent to Hypercore logs
   "storageDir": "tmp/hypercore-logs", // stores hypercore files, including public and secret key
   "publicKey": "", // (optional) if empty, new key pair is created
-  "secretKey": "" // (optional) if empty, new key pair is created
+  "secretKey": "", // (optional) if empty, new key pair is created,
+  "feedOpts": {}, // (optional) feed options passed to Hypercore
+  "swarmOpts": {} // (optional) swarm options passed to Hypercore
 }
 ```
 
@@ -44,7 +45,21 @@ The directory holds:
 - Logs
 
 ## API
-Use `getLogger()` to get a logger instance.  
-The logger is an instance of Winston with `console` and `hypercore` transports configured.
+Use `getLogger(opts)` to get a logger instance.  
+Supported `opts` with their defaults:
 
-Refer to [Winston Docs](https://github.com/winstonjs/winston#readme) for more information on the Winston API.
+```ts
+{
+  enableConsole: true // when enabled, prints logs to console
+  enableHypercore: true // when enabled, sends logs to hypercore
+}
+```
+
+Logger instance supports the following methods:
+
+```js
+logger.log(...params)
+logger.info(...params) // same as logger.log()
+logger.error(...params)
+logger.trace(...params)
+```

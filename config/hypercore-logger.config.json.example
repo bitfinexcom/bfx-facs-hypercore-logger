@@ -1,7 +1,8 @@
 {
   "enable": true,
-  "level": "info",
   "storageDir": "tmp/hypercore-logs",
   "publicKey": "",
-  "secretKey": ""
+  "secretKey": "",
+  "feedOpts": {},
+  "swarmOpts": {}
 }
