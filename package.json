@@ -17,8 +17,7 @@
   },
   "dependencies": {
     "bfx-facs-base": "git+https://github.com/bitfinexcom/bfx-facs-base.git",
-    "hypercore-logs": "git+https://github.com/bitfinexcom/hypercore-logs.git",
-    "winston": "3.7.2"
+    "hypercore-logs": "git+https://github.com/bitfinexcom/hypercore-logs.git"
   },
   "devDependencies": {
     "mocha": "^10.0.0"

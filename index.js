@@ -1,8 +1,7 @@
 const Base = require('bfx-facs-base')
 const { HyperCoreLogger } = require('hypercore-logs')
-const HyperCoreTransport = require('./lib/winston-transport-hypercore')
 const path = require('path')
-const winston = require('winston')
+const Logger = require('./lib/logger')
 
 class HyperCoreLoggerFacility extends Base {
   constructor (caller, opts, ctx) {
@@ -48,33 +47,12 @@ class HyperCoreLoggerFacility extends Base {
     })
   }
 
-  getLogger () {
-    const { format } = winston
+  getLogger (opts = {}) {
     const hypercoreCfg = this.conf
 
-    const logger = winston.createLogger({
-      level: 'info',
-      format: format.combine(
-        format.errors({ stack: true }),
-        format.timestamp(),
-        format.printf(info => `${info.timestamp} ${info.level}: ${info.message}${info.stack ? `\n${info.stack}` : ''}`)
-      ),
-      transports: [
-        new winston.transports.Console()
-      ]
-    })
-
-    if (hypercoreCfg.enable) {
-      const hypercore = new HyperCoreTransport({
-        server: this.hyperCoreLogs,
-        level: hypercoreCfg.level ?? 'info'
-      })
-
-      logger.add(hypercore)
-    }
-
-    logger.on('error', err => {
-      console.trace(err)
+    const logger = new Logger(this.hyperCoreLogs, {
+      ...opts,
+      enableHypercore: hypercoreCfg.enable
     })
 
     return logger
