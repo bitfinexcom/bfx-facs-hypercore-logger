@@ -56,4 +56,5 @@ logger.log(...params)
 logger.info(...params) // same as logger.log()
 logger.error(...params)
 logger.trace(...params)
+logger.warn(...params)
 ```
