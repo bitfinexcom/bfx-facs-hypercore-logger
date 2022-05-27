@@ -4,6 +4,8 @@ const path = require('path')
 const Logger = require('./lib/logger')
 
 class HyperCoreLoggerFacility extends Base {
+  loggerInstance
+
   constructor (caller, opts, ctx) {
     super(caller, opts, ctx)
 
@@ -49,7 +51,15 @@ class HyperCoreLoggerFacility extends Base {
     })
   }
 
-  getLogger (opts = {}) {
+  getLogger () {
+    if (!this.loggerInstance) {
+      this.loggerInstance = this.createLogger()
+    }
+
+    return this.loggerInstance
+  }
+
+  createLogger (opts = {}) {
     const hypercoreCfg = this.conf
 
     const logger = new Logger({
