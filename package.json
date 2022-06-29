@@ -1,0 +1,41 @@
+{
+  "name": "bfx-facs-hypercore-logger",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Bitfinex Hypercore Logger",
+  "author": {
+    "name": "Michal Kralik",
+    "email": "michal.kralik@bitfinex.com"
+  },
+  "keywords": [
+    "bitfinex",
+    "hypercore",
+    "logger"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "bfx-facs-base": "git+https://github.com/bitfinexcom/bfx-facs-base.git",
+    "hypercore-logs": "git+https://github.com/bitfinexcom/hypercore-logs.git#v2.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  },
+  "engine": {
+    "node": ">=14.0"
+  },
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitfinexcom/bfx-facs-hypercore-logger.git"
+  },
+  "homepage": "https://github.com/bitfinexcom/bfx-facs-hypercore-logger",
+  "maintainers": [
+    {
+      "name": "Michal Kralik",
+      "email": "michal.kralik@bitfinex.com"
+    }
+  ]
+}
