@@ -54,8 +54,8 @@ Supported `opts` with their defaults:
 
 ```ts
 {
-  enableConsole: true; // when enabled, prints logs to console
-  enableHypercore: true; // when enabled, sends logs to hypercore
+  enableConsole: true, // when enabled, prints logs to console
+  enableHypercore: true, // when enabled, sends logs to hypercore
 }
 ```
 
