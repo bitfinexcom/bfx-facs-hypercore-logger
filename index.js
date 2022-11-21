@@ -16,39 +16,33 @@ class HyperCoreLoggerFacility extends Base {
   }
 
   _start0 (cb) {
-    super._start0(err => {
-      if (err) {
-        return cb(err)
-      }
+    const hypercoreCfg = this.conf
+    if (!hypercoreCfg?.enable) {
+      return cb(null)
+    }
 
-      const hypercoreCfg = this.conf
-      if (!hypercoreCfg?.enable) {
-        return cb(null)
-      }
+    const feedDir = path.normalize(path.resolve(hypercoreCfg.storageDir))
+    const server = new HyperCoreLogger(
+      feedDir,
+      hypercoreCfg.publicKey,
+      {
+        secretKey: hypercoreCfg.secretKey,
+        ...(hypercoreCfg.feedOpts ?? {})
+      },
+      hypercoreCfg.swarmOpts ?? {}
+    )
 
-      const feedDir = path.normalize(path.resolve(hypercoreCfg.storageDir))
-      const server = new HyperCoreLogger(
-        feedDir,
-        hypercoreCfg.publicKey,
-        {
-          secretKey: hypercoreCfg.secretKey,
-          ...(hypercoreCfg.feedOpts ?? {})
-        },
-        hypercoreCfg.swarmOpts ?? {}
-      )
+    this.hyperCoreLogs = server
 
-      this.hyperCoreLogs = server
+    server.start()
+      .then(() => {
+        if (!hypercoreCfg.publicKey) {
+          console.log(`HyperCore public key: ${server.feed.key.toString('hex')}`)
+        }
 
-      server.start()
-        .then(() => {
-          if (!hypercoreCfg.publicKey) {
-            console.log(`HyperCore public key: ${server.feed.key.toString('hex')}`)
-          }
-
-          cb(null)
-        })
-        .catch(err => cb(err))
-    })
+        cb(null)
+      })
+      .catch(err => cb(err))
   }
 
   getLogger () {
