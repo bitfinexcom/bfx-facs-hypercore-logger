@@ -13,14 +13,16 @@
     "logger"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "standard"
   },
   "dependencies": {
     "bfx-facs-base": "git+https://github.com/bitfinexcom/bfx-facs-base.git",
     "hypercore-logs": "git+https://github.com/bitfinexcom/hypercore-logs.git#v2.1.0"
   },
   "devDependencies": {
-    "mocha": "^10.0.0"
+    "mocha": "^10.0.0",
+    "standard": "16.0.3"
   },
   "engine": {
     "node": ">=14.0"
@@ -37,5 +39,10 @@
       "name": "Michal Kralik",
       "email": "michal.kralik@bitfinex.com"
     }
-  ]
+  ],
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
 }
